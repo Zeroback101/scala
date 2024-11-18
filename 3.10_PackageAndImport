@@ -1,0 +1,51 @@
+// 1. package
+// 파일들을 하나의 네임스페이스에 묶어두기 위해 사용
+// 계층구조로 .(dot)를 사용해서 표현한다.
+// 2. package objects
+// 패키지 이름으로 파일을 만들 수 있다.
+// 메소드나 변수를 정의할 수 있는데, 해당 패키지 안의 클래스는 전부 사용 가능
+
+// 1. Import
+// 패키지로 만든 것을 파일로 임포트할 경우 사용
+// _(언더바): 해당 패키지의 모든 파일 임포트
+// {file1, file2}: 여러 파일 임포트
+
+
+package lecture
+
+// selective imports
+import util.{CoreUtil, ExtraUtil}
+
+// wildcard imports
+// import util._
+
+object PackagesAndImports extends App {
+  val coreUtil = new CoreUtil
+  println(coreUtil.CONSTANT)
+  val extraUtil = new ExtraUtil
+
+  // full package name
+  // val coreUtil2 = new util.CoreUtil
+
+  // package object
+  println(commonValue)
+  commonMethod()
+
+  // scoping: 전부 임포트
+  import util._
+}
+
+======================================
+package util
+
+class CoreUtil {
+  val CONSTANT: String = "Hello"
+}
+
+======================================
+package util
+
+class ExtraUtil {
+
+}
+
